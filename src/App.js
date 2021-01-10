@@ -7,12 +7,7 @@ function App() {
   const [text, setText] = useState("Circle Name");
   const [disabled, setDisabled] = useState(false);
   const [brokenCounter, setBrokenCounter] = useState(0)
-
-const checkCounter = () => {
-  if (brokenCounter > 0) {
-      console.log('im in')
-  }
-}
+  const [litCounter, setLitCounter] = useState(0)
 
 
   const handleEdit = (e) => {
@@ -35,13 +30,22 @@ const checkCounter = () => {
       if(brokenCounter>0){
         setBrokenCounter(brokenCounter-1)
       }
+    } else if (e.target.name === 'increaseLit') {
+      if(litCounter<8) {
+        setLitCounter(litCounter+1)
+      }
+    } else if (e.target.name === 'decreaseLit') {
+      if(litCounter>0){
+        setLitCounter(litCounter-1)
+      }
     };
   }
 
   const handleReset = (e) => {
     e.preventDefault();
     setText('Circle Name');
-    setDisabled(false)
+    setBrokenCounter(0)
+    setLitCounter(0)
   }
 
   return (
@@ -53,12 +57,14 @@ const checkCounter = () => {
           handleReset={handleReset}
           brokenCounter={brokenCounter}
           handleCounter={handleCounter}
+          litCounter={litCounter}
         />
       </div>
       <div>
         <Circle 
         text={text} 
         brokenCounter={brokenCounter}
+        litCounter={litCounter}
         />
       </div>
     </div>
