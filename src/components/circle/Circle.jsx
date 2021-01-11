@@ -123,7 +123,7 @@ const Circle = (props) => {
                     <g >
                         <path className="st13" id="CURVEDTEXT" d="M51.9,91.5C53.3,69,71.8,54,94.6,54c22.8,0,41.3,14.7,42.7,37.1" />
                     </g>
-                    <text style={{ 'cursor': 'pointer' }} text x="0" y="50" fontFamily="helvetica" fontSize="16" fill="ghostwhite" padding="3px">
+                    <text style={{ 'cursor': 'pointer' }} text x="0" y="50" fontFamily="helvetica" fontSize="16" fill="ghostwhite" padding="3px" textshadow='2px 2px 1px lightgray'>
                         <textPath alignmentBaseline="top" href="#CURVEDTEXT" startOffset="50%" textAnchor="middle">
                             {text}
                         </textPath>
