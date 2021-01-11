@@ -24,7 +24,7 @@ path{
   min-height: 100vh;
   background: #2A73A0;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .input {
@@ -34,8 +34,8 @@ path{
 }
 
 .st0{fill:none;stroke:#000000;stroke-width:0.3357;stroke-miterlimit:10;}
-.inner{fill: rgba(220, 220, 220, 0.3); }
-.outer{fill: rgba(220, 220, 220, 0.4); stroke: rgba(220,220,220,0.5);stroke-width:1;stroke-miterlimit:10;}
+.inner{fill: rgba(220, 220, 220, 0.3); stroke: rgba(220,220,220,0.1);stroke-width:0.5;stroke-miterlimit:10;}
+.outer{fill: rgba(220, 220, 220, 0.5); stroke: rgba(220,220,220,0.5);stroke-width:1;stroke-miterlimit:10;}
 .st2{fill:none;stroke:#000000;stroke-width:0.9359;stroke-miterlimit:10;}
 .st4{fill:none;stroke:#000000;stroke-width:1.0071;stroke-miterlimit:10;}
 .st6{fill:none;stroke:#000000;stroke-width:1.2515;stroke-miterlimit:10;}
@@ -49,17 +49,18 @@ path{
 .none {fill: none; stroke:none}
 
 .unlit { 
-  fill: rgba(49, 49, 49, 0.4);
+  fill: rgba(49, 49, 49, 0.3);
+  stroke: rgba(220,220,220,0.25);stroke-width:0.5;stroke-miterlimit:10;
   transition: 0.3s
 }
 
 .lit{
   fill:rgba(250, 250, 250, 0.6);
+  stroke: rgba(220,220,220,0.25);stroke-width:0.5;stroke-miterlimit:10;
   transition: 0.3s
 }
 
 .on {
-  transition: 0.3s;
   display: flex;
 }
 

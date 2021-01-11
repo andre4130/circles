@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Input from './components/input/Input'
 import Circle from './components/circle/Circle';
 import CircleClickable from './components/circleClickable/CircleClickable'
@@ -52,27 +52,35 @@ function App() {
 
   return (
     <div className="container-fluid d-flex p-0 app">
-      <div className="col-md-6">
-        <CircleClickable/>
+      <div className="row">
+        <div className="d-flex col-6-md justify-content-center pr-5">
+          <CircleClickable />
+        </div>
+        <div className="d-flex col-6-md justify-content-center pr-5">
+          <div className="input pt-1">
+            <Input
+              text={text}
+              handleEdit={handleEdit}
+              disabled={disabled}
+              handleReset={handleReset}
+              brokenCounter={brokenCounter}
+              handleCounter={handleCounter}
+              litCounter={litCounter}
+            />
+          </div>
+          <div className="d-flex justify-content-start pl-5" style={{ 'zIndex': '5' }}>
+
+            <Circle
+              text={text}
+              brokenCounter={brokenCounter}
+              litCounter={litCounter}
+            />
+          </div>
+        </div>
       </div>
-      <div className="col-md-6 input pt-5 pr-5">
-        <Input
-          text={text}
-          handleEdit={handleEdit}
-          disabled={disabled}
-          handleReset={handleReset}
-          brokenCounter={brokenCounter}
-          handleCounter={handleCounter}
-          litCounter={litCounter}
-        />
-      </div>
-      <div>
-        <Circle
-          text={text}
-          brokenCounter={brokenCounter}
-          litCounter={litCounter}
-        />
-      </div>
+
+
+
     </div>
 
   );

@@ -108,9 +108,7 @@ const Circle = (props) => {
                         <a href="#" onClick={handleName}>
                             <path className="inner icons" d="M160.1,92c-1.3-35.1-30.2-63.3-65.7-63.3c-35.6,0-64.5,28.2-65.7,63.5l42.2,0c1.1-12,11.2-21.3,23.5-21.3
 		c12.2,0,22.2,9.2,23.4,21L160.1,92z"/>
-                        </a>
-
-
+                        </a>    
                     </g>
                     <a href="#" onClick={connectFunction}>
                         <path className="inner icons" d="M95.9,117.8c11.5-0.9,20.6-10.2,21.3-21.8l42.5,0c-0.8,34.8-29,63.3-64,64.1L95.9,117.8z" />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const CircleClickable = () => {
 
@@ -44,8 +44,19 @@ const CircleClickable = () => {
         setBool({ ...bool, [b]: false })
     }
 
-    const explanation = () => {
+    const explanation = (e) => {
+        e.preventDefault();
         alert('Click on the Dynamic Indicators to Make them Lit, Broken or Unlit')
+    }
+
+    const searchFunction = (e) => {
+        e.preventDefault();
+        alert(`You Clicked on the Search Function`)
+    }
+
+    const connectFunction = (e) => {
+        e.preventDefault();
+        alert(`You Clicked on the Connect Function`)
     }
 
     return (
@@ -59,10 +70,10 @@ const CircleClickable = () => {
                             <path className="inner icons" d="M160.1,92c-1.3-35.1-30.2-63.3-65.7-63.3c-35.6,0-64.5,28.2-65.7,63.5l42.2,0c1.1-12,11.2-21.3,23.5-21.3c12.2,0,22.2,9.2,23.4,21L160.1,92z" />
                         </a>
                     </g>
-                    <a href="#">
+                    <a href="#" onClick={connectFunction}>
                         <path className="inner icons" d="M95.9,117.8c11.5-0.9,20.6-10.2,21.3-21.8l42.5,0c-0.8,34.8-29,63.3-64,64.1L95.9,117.8z" />
                     </a>
-                    <a href="#">
+                    <a href="#" onClick={searchFunction}>
                         <path className="inner icons" d="M91.9,160.1c-34.7-1.1-62.5-29.4-63.5-63.8L70.9,96c0.7,11.5,9.7,20.8,21.2,21.7L91.9,160.1z" />
                     </a>
                 </g>
@@ -73,9 +84,9 @@ const CircleClickable = () => {
                         <path className="st13" id="CURVEDTEXT" d="M51.9,91.5C53.3,69,71.8,54,94.6,54c22.8,0,41.3,14.7,42.7,37.1" />
                     </g>
                     <text style={{ 'cursor': 'pointer' }} text x="0" y="50" fontFamily="helvetica" fontSize="16" fill="ghostwhite" padding="3px">
-                    
-                            <textPath alignmentBaseline="top" href="#CURVEDTEXT" startOffset="50%" textAnchor="middle">
-                                Clickable Circle
+
+                        <textPath alignmentBaseline="top" href="#CURVEDTEXT" startOffset="50%" textAnchor="middle">
+                            Clickable Circle
                         </textPath>
                     </text>
                 </g>
@@ -206,7 +217,6 @@ const CircleClickable = () => {
                     </g>
                 </g>
                 <g id="icons" >
-
                     <g transform="translate(-24 -92)">
                         <g>
                             <path id="magnifier-b_12_" d="M92.5,221.2l3.4,2.7l-2.8,2.8l-2.8-3.3L92.5,221.2z M82.9,207.8c3.9,0,7,3.1,7,6.9
