@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Input from './components/input/Input'
 import Circle from './components/circle/Circle';
+import CircleClickable from './components/circleClickable/CircleClickable'
 
 
 function App() {
@@ -23,20 +24,20 @@ function App() {
   const handleCounter = (e) => {
     e.preventDefault();
     if (e.target.name === 'increaseBroken') {
-      if(brokenCounter<8) {
-        setBrokenCounter(brokenCounter+1)
+      if (brokenCounter < 8) {
+        setBrokenCounter(brokenCounter + 1)
       }
     } else if (e.target.name === 'decreaseBroken') {
-      if(brokenCounter>0){
-        setBrokenCounter(brokenCounter-1)
+      if (brokenCounter > 0) {
+        setBrokenCounter(brokenCounter - 1)
       }
     } else if (e.target.name === 'increaseLit') {
-      if(litCounter<8) {
-        setLitCounter(litCounter+1)
+      if (litCounter < 8) {
+        setLitCounter(litCounter + 1)
       }
     } else if (e.target.name === 'decreaseLit') {
-      if(litCounter>0){
-        setLitCounter(litCounter-1)
+      if (litCounter > 0) {
+        setLitCounter(litCounter - 1)
       }
     };
   }
@@ -44,14 +45,19 @@ function App() {
   const handleReset = (e) => {
     e.preventDefault();
     setText('Circle Name');
-    setBrokenCounter(0)
-    setLitCounter(0)
+    setBrokenCounter(0);
+    setLitCounter(0);
+    setDisabled(false);
   }
 
   return (
     <div className="container-fluid d-flex p-0 app">
-      <div className="input pt-5 pr-5">
+      <div className="col-md-6">
+        <CircleClickable/>
+      </div>
+      <div className="col-md-6 input pt-5 pr-5">
         <Input
+          text={text}
           handleEdit={handleEdit}
           disabled={disabled}
           handleReset={handleReset}
@@ -61,10 +67,10 @@ function App() {
         />
       </div>
       <div>
-        <Circle 
-        text={text} 
-        brokenCounter={brokenCounter}
-        litCounter={litCounter}
+        <Circle
+          text={text}
+          brokenCounter={brokenCounter}
+          litCounter={litCounter}
         />
       </div>
     </div>

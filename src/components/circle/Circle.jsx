@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 const Circle = (props) => {
 
-    const {text, brokenCounter, litCounter} = props;
+    const { text, brokenCounter, litCounter } = props;
 
-    const[bool, setBool] = useState(
+    const [bool, setBool] = useState(
         {
             bool1: false,
             bool2: false,
@@ -17,7 +17,7 @@ const Circle = (props) => {
         }
     )
 
-    const[lit, setLit] = useState(
+    const [lit, setLit] = useState(
         {
             lit1: false,
             lit2: false,
@@ -30,51 +30,73 @@ const Circle = (props) => {
         }
     )
 
-useEffect(() => {
-setBrokenIndicator();
-checkReset();
-}, [brokenCounter])
+    useEffect(() => {
+        setBrokenIndicator();
+        checkReset();
+        setLitIndicator();
+    }, [brokenCounter, litCounter])
 
-const checkReset = () => {
-    if (litCounter === 0 && brokenCounter === 0) {
-        setLit({
-            lit1: false,
-            lit2: false,
-            lit3: false,
-            lit4: false,
-            lit5: false,
-            lit6: false,
-            lit7: false,
-            lit8: false,
-        });
-        setBool({
-            bool1: false,
-            bool2: false,
-            bool3: false,
-            bool4: false,
-            bool5: false,
-            bool6: false,
-            bool7: false,
-            bool8: false,
-        })
-    };
-}
 
-const setBrokenIndicator = () => {
-    for (let i = 1; i <= 8; i++) {
-        console.log(brokenCounter)
-        if(brokenCounter >= i) {
-            let temp = 'bool'+i;
-            console.log(brokenCounter, i, temp)
-            setBool({...bool,[temp]: true})
-        } else if ( brokenCounter < i){
-            let temp = 'bool'+i;
-            setBool({...bool,[temp]: false})
+    const checkReset = () => {
+        if (litCounter === 0 && brokenCounter === 0) {
+            setLit({
+                lit1: false,
+                lit2: false,
+                lit3: false,
+                lit4: false,
+                lit5: false,
+                lit6: false,
+                lit7: false,
+                lit8: false,
+            });
+            setBool({
+                bool1: false,
+                bool2: false,
+                bool3: false,
+                bool4: false,
+                bool5: false,
+                bool6: false,
+                bool7: false,
+                bool8: false,
+            })
+        };
+    }
+
+    const setBrokenIndicator = () => {
+        for (let i = 1; i <= 8; i++) {
+            var temp = 'bool' + i;
+            if (brokenCounter >= i) {
+                console.log(temp, 'true')
+                setBool({ ...bool, [temp]: true });
+            } 
         }
     }
-}
+    console.log(bool)
 
-console.log(bool)
+    const setLitIndicator = () => {
+        for (let i = 1; i <= 8; i++) {
+            let totalCounter = (brokenCounter + litCounter);
+            if (totalCounter >= i) {
+                let temp = 'lit' + i;
+                setLit({ ...lit, [temp]: true })
+            };
+        }
+    }
+
+    const handleName = (e) => {
+        e.preventDefault();
+        alert(`Your Circle is called ${text}`)
+    }
+
+    const searchFunction = (e) => {
+        e.preventDefault();
+        alert(`You Clicked on the Search Function`)
+    }
+
+    const connectFunction = (e) => {
+        e.preventDefault();
+        alert(`You Clicked on the Connect Function`)
+    }
 
     return (
         <div>
@@ -83,11 +105,19 @@ console.log(bool)
                 {/* CENTER ELEMENTS */}
                 <g id="centro">
                     <g>
-                        <path className="inner icons"  d="M160.1,92c-1.3-35.1-30.2-63.3-65.7-63.3c-35.6,0-64.5,28.2-65.7,63.5l42.2,0c1.1-12,11.2-21.3,23.5-21.3
+                        <a href="#" onClick={handleName}>
+                            <path className="inner icons" d="M160.1,92c-1.3-35.1-30.2-63.3-65.7-63.3c-35.6,0-64.5,28.2-65.7,63.5l42.2,0c1.1-12,11.2-21.3,23.5-21.3
 		c12.2,0,22.2,9.2,23.4,21L160.1,92z"/>
+                        </a>
+
+
                     </g>
-                    <path className="inner icons" d="M95.9,117.8c11.5-0.9,20.6-10.2,21.3-21.8l42.5,0c-0.8,34.8-29,63.3-64,64.1L95.9,117.8z" />
-                    <path className="inner icons" d="M91.9,160.1c-34.7-1.1-62.5-29.4-63.5-63.8L70.9,96c0.7,11.5,9.7,20.8,21.2,21.7L91.9,160.1z" />
+                    <a href="#" onClick={connectFunction}>
+                        <path className="inner icons" d="M95.9,117.8c11.5-0.9,20.6-10.2,21.3-21.8l42.5,0c-0.8,34.8-29,63.3-64,64.1L95.9,117.8z" />
+                    </a>
+                    <a href="#"onClick={searchFunction}>
+                        <path className="inner icons" d="M91.9,160.1c-34.7-1.1-62.5-29.4-63.5-63.8L70.9,96c0.7,11.5,9.7,20.8,21.2,21.7L91.9,160.1z" />
+                    </a>
                 </g>
 
                 {/* CURVED TEXT AND GUIDE CURVE*/}
@@ -95,7 +125,7 @@ console.log(bool)
                     <g >
                         <path className="st13" id="CURVEDTEXT" d="M51.9,91.5C53.3,69,71.8,54,94.6,54c22.8,0,41.3,14.7,42.7,37.1" />
                     </g>
-                    <text style={{'cursor': 'pointer'}} text x="0" y="50" fontFamily="helvetica" fontSize="16" fill="ghostwhite" padding="3px">
+                    <text style={{ 'cursor': 'pointer' }} text x="0" y="50" fontFamily="helvetica" fontSize="16" fill="ghostwhite" padding="3px">
                         <textPath alignmentBaseline="top" href="#CURVEDTEXT" startOffset="50%" textAnchor="middle">
                             {text}
                         </textPath>
@@ -114,7 +144,7 @@ console.log(bool)
                     <path id="indicator1" className={lit.lit1 ? 'lit' : 'unlit'} d="M38.2,40.7C25.4,54.1,17.3,72.3,16.6,92.2H6.5c0.6-22.8,10-43.7,24.8-58.9L38.2,40.7z" />
                     <path id="indicator2" className={lit.lit2 ? 'lit' : 'unlit'} d="M92,16.8c-18.4,0.5-36.1,7.5-50.5,21l-7.2-7.2C50.7,15.2,71,7.2,91.9,6.7L92,16.8z" />
                     <path id="indicator3" className={lit.lit3 ? 'lit' : 'unlit'} d="M148.1,37.9c-13.4-12.7-32.6-20.7-51.6-21.3V6.5c22,0.6,43.6,9.7,58.8,24.2L148.1,37.9z" />
-                    <path id="indicator4" className={lit.lit4 ? 'lit' : 'unlit'} d="M172.2,92.1c-0.5-18.4-8.4-37.8-21.4-51.7l7.1-7.2c15.1,16,23.9,37.9,24.5,58.8L172.2,92.1z" />                  
+                    <path id="indicator4" className={lit.lit4 ? 'lit' : 'unlit'} d="M172.2,92.1c-0.5-18.4-8.4-37.8-21.4-51.7l7.1-7.2c15.1,16,23.9,37.9,24.5,58.8L172.2,92.1z" />
                     <path id="indicator5" className={lit.lit5 ? 'lit' : 'unlit'} d="M158.6,154.5c14.5-15.4,23.3-35.6,23.7-58.3l-10.2-0.1c-0.4,19.8-8.3,37.9-20.9,51.4L158.6,154.5z" />
                     <path id="indicator6" className={lit.lit6 ? 'lit' : 'unlit'} d="M96.2,171.4c18-0.5,37.9-7.5,52.4-21.5l7.1,7.3c-16.4,15.9-38.3,23.5-59.3,24.1L96.2,171.4z" />
                     <path id="indicator7" className={lit.lit7 ? 'lit' : 'unlit'} d="M40.9,149.8c13.6,12.9,30.9,21.1,51.1,21.6l0.1,9.9c-22.9-0.4-42.6-9.3-58-24L40.9,149.8z" />
@@ -123,7 +153,7 @@ console.log(bool)
 
                 {/* BROKEN INDICATORS */}
                 <g id="indicators_broken">
-                <g id="broken1" className={bool.bool1 ? 'on' : 'off'}>
+                    <g id="broken1" className={bool.bool1 ? 'on' : 'off'}>
                         <path className="st8" d="M38.2,40.7l-6.9-7.5c-5.2,5.4-9.8,11.5-13.5,18.1c-4.1,0.8-7.1,4.4-7.1,8.7c0,1.6,0.4,3,1.1,4.3
 			c-3.1,8.6-5,17.9-5.3,27.6l10.2-0.1C17,83.8,18.5,76,21,68.8c4.2-0.7,7.4-4.3,7.4-8.7c0-1.7-0.5-3.2-1.3-4.6
 			C30.2,50.1,34,45.2,38.2,40.7z"/>
@@ -193,10 +223,10 @@ console.log(bool)
 				c1.2,2.9,4.1,5,7.4,5c4.4,0,8-3.6,8-8s-3.6-8-8-8c-3.4,0-6.2,2.1-7.4,5l-2.1,0C97.5,255.7,101.3,252.8,105.8,252.8z M110.8,262.8
 				l-9,5l2-3l-12-1c-0.6,0-1-0.4-1-1s0.4-1,1-1l12-1l-2-3L110.8,262.8z"/>
                         </g>
-                    </g> 
-                    </g> 
-                    <g id="icons" >
-                                    
+                    </g>
+                </g>
+                <g id="icons" >
+
                     <g transform="translate(-24 -92)">
                         <g>
                             <path id="magnifier-b_12_" d="M92.5,221.2l3.4,2.7l-2.8,2.8l-2.8-3.3L92.5,221.2z M82.9,207.8c3.9,0,7,3.1,7,6.9
